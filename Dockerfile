@@ -21,6 +21,7 @@ RUN   mkdir /jmeter \
       && rm apache-jmeter-$JMETER_VERSION.tgz
 
 ENV JMETER_HOME /jmeter/apache-jmeter-$JMETER_VERSION/
+ENV	JMETER_BIN	${JMETER_HOME}/bin
 ENV PATH $JMETER_HOME/bin:$PATH
 
 EXPOSE 1099 50000
