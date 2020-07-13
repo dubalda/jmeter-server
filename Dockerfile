@@ -1,8 +1,10 @@
 FROM openjdk:11.0.7-jdk
 
+ARG JMETER_VERSION=5.3
+ENV SSL_DISABLED true
+
 ARG TZ="Europe/Moscow"
 
-ARG JMETER_VERSION=5.3
 
 RUN apt-get update && \
     apt-get -qy install \
@@ -11,7 +13,7 @@ RUN apt-get update && \
                 iputils-ping \
                 unzip && \
     apt-get clean
-    
+
 RUN   mkdir /jmeter \
       && cd /jmeter/ \
       && wget https://archive.apache.org/dist/jmeter/binaries/apache-jmeter-$JMETER_VERSION.tgz \
@@ -25,4 +27,5 @@ EXPOSE 1099 50000
 
 ENTRYPOINT $JMETER_HOME/bin/jmeter-server \
                         -Dserver.rmi.localport=50000 \
-                        -Dserver_port=1099
+                        -Dserver_port=1099 \
+                        -Jserver.rmi.ssl.disable=${SSL_DISABLED}
