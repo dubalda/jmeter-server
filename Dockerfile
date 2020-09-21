@@ -35,6 +35,6 @@ RUN mkdir /apache && \
     jmeter --version && \
     ls -lh ${JMETER_HOME}lib/ext/
 
-EXPOSE 1099 50000
+EXPOSE 1099
 
 ENTRYPOINT ["/apache/jmeter/bin/jmeter-server", "-Dserver.rmi.localport=1099", "-Jserver.rmi.ssl.disable=${SSL_DISABLED}"]
