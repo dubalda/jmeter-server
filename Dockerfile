@@ -1,7 +1,6 @@
 FROM openjdk:14.0.2-jdk-buster
 
 ARG JMETER_VERSION=5.2.1
-ENV SSL_DISABLED true
 
 ENV JMETER_HOME /apache/jmeter/
 ENV JMETER_BIN  ${JMETER_HOME}bin
@@ -37,4 +36,4 @@ RUN mkdir /apache && \
 
 EXPOSE 1099
 
-ENTRYPOINT ["/apache/jmeter/bin/jmeter-server", "-Dserver.rmi.localport=1099", "-Jserver.rmi.ssl.disable=${SSL_DISABLED}"]
+ENTRYPOINT ["/apache/jmeter/bin/jmeter-server"]
