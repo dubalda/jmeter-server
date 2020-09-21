@@ -37,4 +37,4 @@ RUN mkdir /apache && \
 
 EXPOSE 1099 50000
 
-ENTRYPOINT ["/apache/jmeter/bin/jmeter-server", "-Dserver.rmi.localport=50000", "-Dserver_port=1099", "-Jserver.rmi.ssl.disable=${SSL_DISABLED}"]
+ENTRYPOINT ["/apache/jmeter/bin/jmeter-server", "-Dserver.rmi.localport=1099", "-Jserver.rmi.ssl.disable=${SSL_DISABLED}"]
